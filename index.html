@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quer me beijar?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            margin-top: 20px;
+            margin-bottom: 40px;
+            font-size: 24px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #sim {
+            position: absolute;
+        }
+        #image-container {
+            position: relative;
+            margin-top: 50px;
+            display: none; 
+        }
+        #imagem {
+            width: 90%;
+            max-width: 600px;
+            border: 2px solid #000;
+        }
+        #overlay-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <h1>Você quer me beijar? 😘</h1>
+    <div class="button-container">
+        <button id="sim">Sim</button>
+        <button id="nao">Não</button>
+    </div>
+    <div id="image-container">
+        <img id="imagem" src="https://yt3.googleusercontent.com/ntbST7fnwZnnxC8vcpzND-tj0zQKhLVGAbljZLA3d842m7eMT6fLn4yWE6U2QdAVSqEaM_10=s900-c-k-c0x00ffffff-no-rj" alt="Não mesmo?">
+        <div id="overlay-text">Tem certeza?</div>
+    </div>
+
+    <script>
+        
+        function moveButton(event) {
+            const simButton = document.getElementById("sim");
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 50);
+            simButton.style.left = `${x}px`;
+            simButton.style.top = `${y}px`;
+        }
+
+        const simButton = document.getElementById("sim");
+        simButton.addEventListener("click", moveButton);
+        simButton.addEventListener("touchstart", moveButton);
+
+        
+        document.getElementById("nao").addEventListener("click", () => {
+            const imageContainer = document.getElementById("image-container");
+            imageContainer.style.display = "block";
+        });
+    </script>
+</body>
+</html>
