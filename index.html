@@ -30,6 +30,10 @@
             border-radius: 5px;
             cursor: pointer;
         }
+        #nao {
+            pointer-events: none;
+            opacity: 0.5;
+        }
         #image-container {
             position: relative;
             margin-top: 50px;
@@ -53,7 +57,7 @@
     </style>
 </head>
 <body>
-    <h1>somos amigos? 😘</h1>
+    <h1>somos amigos?? 😘</h1>
     <div class="button-container">
         <button id="sim">Sim</button>
         <button id="nao">Não</button>
@@ -64,22 +68,28 @@
     </div>
 
     <script>
-        // Função para mover o botão "Sim"
-        function moveButton(event) {
+        let simClicks = 0;
+
+        function moveButton() {
             const simButton = document.getElementById("sim");
             const x = Math.random() * (window.innerWidth - 100);
             const y = Math.random() * (window.innerHeight - 50);
             simButton.style.position = 'absolute';
             simButton.style.left = `${x}px`;
             simButton.style.top = `${y}px`;
+
+            simClicks++;
+            if (simClicks >= 2) {
+                const naoButton = document.getElementById("nao");
+                naoButton.style.pointerEvents = 'auto';
+                naoButton.style.opacity = '1';
+            }
         }
 
-        // Eventos de clique e toque no botão "Sim"
         const simButton = document.getElementById("sim");
         simButton.addEventListener("click", moveButton);
         simButton.addEventListener("touchstart", moveButton);
 
-        // Botão "Não" exibe a imagem e texto sobreposto
         document.getElementById("nao").addEventListener("click", () => {
             const imageContainer = document.getElementById("image-container");
             imageContainer.style.display = "block";
